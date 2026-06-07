@@ -9,6 +9,7 @@ import Project from "./views/Project"
 import Contact from "./views/Contact"
 import Footer from "./components/Footer"
 import { useTheme } from "./context/ThemeContext"
+import Particule from "./components/Particule"
 
 
 function App() {
@@ -50,10 +51,10 @@ function App() {
       
       {/* Starfield/Galaxy 3D Animation */}
       <Suspense fallback={null}>
-        {/* <Particule /> */}
+        <Particule /> 
       </Suspense>
       
-      <div className="fixed inset-0 -z-10 bg-background opacity-80">
+      <div className="fixed inset-0 -z-30 bg-background opacity-80">
         <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-3xl animate-pulse-slow"></div>
         <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-accent/5 rounded-full blur-3xl animate-pulse-slow"></div>
       </div>
@@ -71,7 +72,7 @@ function App() {
           )}
         </AnimatePresence>
       </main>
-      {/* <SidebarSocialLinks /> */}
+
       <Footer />
     </div>
   )

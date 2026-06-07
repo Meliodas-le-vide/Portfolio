@@ -1,178 +1,184 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { motion } from "framer-motion";
-import { Menu, X, Moon, Sun, Sparkles } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, Moon, Sun } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
+
+const navLinks = [
+  { name: "Accueil", path: "/" },
+  { name: "À propos", path: "/about" },
+  { name: "Projets", path: "/projects" },
+  { name: "Contact", path: "/contact" },
+];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
-
-  const navLinks = [
-    { name: "Accueil", path: "/" },
-    { name: "À propos", path: "/about" },
-    { name: "Projets", path: "/projects" },
-    { name: "Contact", path: "/contact" },
-  ];
-
-  // Animation variants
-  const navItemVariants = {
-    hidden: { opacity: 0, y: -10 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.1,
-        duration: 0.5,
-        ease: "easeOut",
-      },
-    }),
-  };
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? "glass-card" : "bg-transparent"
+      transition={{ duration: 0.4 }}
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-black/90 backdrop-blur-lg border-b border-orange-500/10 shadow-lg"
+          : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto max-w-5xl px-4">
-        <div className="flex justify-between items-center py-3">
-          <NavLink to="/" className="text-2xl font-bold text-primary">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="h-16 flex items-center justify-between">
+
+          <NavLink to="/" className="flex items-center gap-3">
             <motion.div
-              className="flex items-center gap-2"
               whileHover={{ scale: 1.05 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              className="w-9 h-9 rounded-lg bg-orange-500 flex items-center justify-center shadow-lg shadow-orange-500/30"
             >
-              <span className="relative block" style={{ width: 160, height: 38 }}>
-                <svg viewBox="0 0 370 80.8264972591293" height="38" width="160" style={{ width: '160px', height: '38px', position: 'relative', display: 'block' }}>
-                  <defs></defs>
-         
-                </svg>
-              </span>
+              <span className="text-white font-bold text-sm">E</span>
             </motion.div>
+
+            <div className="leading-tight">
+              <h1 className="text-white font-bold text-sm">
+                Ezechiel
+              </h1>
+
+              <p className="text-orange-500 text-[11px] uppercase tracking-widest">
+                Dev Full Stack
+              </p>
+            </div>
           </NavLink>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link, i) => (
-              <motion.div
-                key={link.path}
-                custom={i}
-                initial="hidden"
-                animate="visible"
-                variants={navItemVariants}
-              >
-                <NavLink
-                  to={link.path}
-                  className={({ isActive }) =>
-                    `font-medium relative overflow-hidden group transition-colors duration-300 hover:text-primary ${
-                      isActive ? "text-primary" : "text-foreground"
-                    }`
-                  }
-                >
-                  <span className="relative z-10">{link.name}</span>
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary group-hover:w-full transition-all duration-300 ease-in-out"></span>
-                </NavLink>
-              </motion.div>
+          <div className="hidden md:flex items-center gap-8">
+
+            {navLinks.map((link) => (
+              <NavLink key={link.path} to={link.path}>
+                {({ isActive }) => (
+                  <div className="relative group">
+                    <span
+                      className={`text-sm transition-colors duration-200 ${
+                        isActive
+                          ? "text-orange-500 font-semibold"
+                          : "text-zinc-400 group-hover:text-white"
+                      }`}
+                    >
+                      {link.name}
+                    </span>
+
+                    {isActive && (
+                      <motion.div
+                        layoutId="underline"
+                        className="absolute left-0 -bottom-1 w-full h-[2px] bg-orange-500 rounded-full"
+                      />
+                    )}
+                  </div>
+                )}
+              </NavLink>
             ))}
-            <motion.button
-              whileHover={{ scale: 1.1, rotate: 15 }}
-              whileTap={{ scale: 0.9 }}
+
+            <button
               onClick={toggleTheme}
-              className="p-2 rounded-full bg-secondary hover:bg-secondary/80 transition-colors duration-300 animated-border"
-              aria-label="Toggle theme"
+              className="w-9 h-9 rounded-lg border border-zinc-800 bg-zinc-900 flex items-center justify-center text-zinc-300 hover:border-orange-500 transition"
             >
               {theme === "dark" ? (
-                <Sun className="w-5 h-5 text-yellow-400" />
+                <Sun size={16} />
               ) : (
-                <Moon className="w-5 h-5 text-foreground" />
+                <Moon size={16} />
               )}
-            </motion.button>
+            </button>
+
+            <NavLink to="/contact">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-4 py-2 rounded-lg bg-orange-500 text-white text-sm font-medium shadow-lg shadow-orange-500/20"
+              >
+                Me contacter
+              </motion.button>
+            </NavLink>
           </div>
 
-          {/* Mobile Navigation Toggle */}
-          <div className="flex items-center md:hidden">
-            <motion.button
-              whileHover={{ scale: 1.1, rotate: 15 }}
-              whileTap={{ scale: 0.9 }}
+          <div className="flex items-center gap-2 md:hidden">
+
+            <button
               onClick={toggleTheme}
-              className="p-2 mr-2 rounded-full bg-secondary hover:bg-secondary/80 transition-colors"
-              aria-label="Toggle theme"
+              className="w-9 h-9 rounded-lg border border-zinc-800 bg-zinc-900 flex items-center justify-center text-zinc-300"
             >
               {theme === "dark" ? (
-                <Sun className="w-5 h-5 text-yellow-400" />
+                <Sun size={16} />
               ) : (
-                <Moon className="w-5 h-5 text-foreground" />
+                <Moon size={16} />
               )}
-            </motion.button>
-            <motion.button
-              whileTap={{ scale: 0.9 }}
+            </button>
+
+            <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 rounded-md text-foreground hover:bg-secondary transition-colors"
-              aria-label="Toggle menu"
+              className="w-9 h-9 rounded-lg border border-zinc-800 bg-zinc-900 flex items-center justify-center text-zinc-300"
             >
-              {isOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </motion.button>
+              {isOpen ? <X size={18} /> : <Menu size={18} />}
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: 0.3 }}
-          className="md:hidden glass-card border-t border-border/30"
-        >
-          <div className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            {navLinks.map((link, i) => (
-              <motion.div
-                key={link.path}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-              >
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden overflow-hidden bg-black/95 border-t border-zinc-900"
+          >
+            <div className="px-6 py-5 flex flex-col gap-5">
+
+              {navLinks.map((link) => (
                 <NavLink
+                  key={link.path}
                   to={link.path}
                   onClick={() => setIsOpen(false)}
-                  className={({ isActive }) =>
-                    `font-medium py-2 block transition-colors duration-300 ${
-                      isActive ? "text-primary" : "text-foreground"
-                    }`
-                  }
                 >
-                  {link.name}
+                  {({ isActive }) => (
+                    <span
+                      className={`block text-sm ${
+                        isActive
+                          ? "text-orange-500 font-semibold"
+                          : "text-zinc-400"
+                      }`}
+                    >
+                      {link.name}
+                    </span>
+                  )}
                 </NavLink>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-      )}
+              ))}
+
+              <NavLink
+                to="/contact"
+                onClick={() => setIsOpen(false)}
+              >
+                <button className="w-full py-3 rounded-lg bg-orange-500 text-white text-sm font-medium">
+                  Me contacter
+                </button>
+              </NavLink>
+
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };

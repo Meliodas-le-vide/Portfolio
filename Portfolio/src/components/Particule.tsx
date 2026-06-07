@@ -1,89 +1,101 @@
-import { useEffect, useMemo, useState } from "react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { useEffect, useState } from "react";
+import Particles from "@tsparticles/react";
 import { loadSlim } from "tsparticles-slim";
-
 
 const Particule = () => {
   const [init, setInit] = useState(false);
+
   useEffect(() => {
-    initParticlesEngine(async (engine: any) => {
-      await loadSlim(engine);
-    }).then(() => {
+    loadSlim().then(() => {
       setInit(true);
     });
   }, []);
 
-  const particlesLoaded = (container: any) => {
-    console.log("Particles Loaded:", container);
-  };
-
-  const options = useMemo(() => ({
-    background: {
-      color: "#162747",
-    },
-    fpsLimit: 40,
-    interactivity: {
-      events: {
-        onClick: { enable: true, mode: "push" },
-        onHover: { enable: true, mode: "repulse" },
-      },
-      modes: {
-        push: { quantity: 4 },
-        repulse: { distance: 200, duration: 0.4 },
-      },
-    },
-    particles: {
-      color: { value: "#f1f1f1" },
-      links: {
-        color: "#ffffff",
-        distance: 150,
-        enable: true,
-        opacity: 0.5,
-        width: 1,
-      },
-      move: {
-        direction: "none",
-        enable: true,
-        outModes: { default: "bounce" },
-        random: false,
-        speed: 6,
-        straight: false,
-      },
-      number: {
-        density: { enable: true, area: 1080 },
-        value: 200,
-      },
-      opacity: {
-        value: { min: 0.1, max: 0.5 },
-        animation: {
-          enable: true,
-          speed: 1,
-          minimumValue: 0.1,
-        },
-      },
-      shape: {
-        type: "circle",
-      },
-      size: {
-        value: { min: 0.5, max: 1.5 },
-        random: { enable: true },
-      },
-    },
-    detectRetina: true,
-  }), []);
+  if (!init) return null;
 
   return (
-    <div className="App">
-      {init && (
-        <Particles
-          id="tsparticles"
-          options={options}
-          particlesLoaded={particlesLoaded}
-        />
-      )}
+    <div className="fixed inset-0 -z-20">
+      <Particles
+        id="tsparticles"
+        options={{
+          fullScreen: {
+            enable: false,
+          },
+
+          background: {
+            color: {
+              value: "transparent",
+            },
+          },
+
+          fpsLimit: 60,
+
+          particles: {
+            number: {
+              value: 80,
+              density: {
+                enable: true,
+              },
+            },
+
+            color: {
+              value: ["#ff6b35", "#ffffff"],
+            },
+
+            links: {
+              enable: true,
+              distance: 120,
+              color: "#ff6b35",
+              opacity: 0.2,
+              width: 1,
+            },
+
+            move: {
+              enable: true,
+              speed: 1,
+            },
+
+            opacity: {
+              value: 0.5,
+            },
+
+            size: {
+              value: {
+                min: 1,
+                max: 3,
+              },
+            },
+          },
+
+          interactivity: {
+            events: {
+              onHover: {
+                enable: true,
+                mode: "repulse",
+              },
+
+              onClick: {
+                enable: true,
+                mode: "push",
+              },
+            },
+
+            modes: {
+              repulse: {
+                distance: 100,
+              },
+
+              push: {
+                quantity: 4,
+              },
+            },
+          },
+
+          detectRetina: true,
+        }}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default Particule
-
+export default Particule;
