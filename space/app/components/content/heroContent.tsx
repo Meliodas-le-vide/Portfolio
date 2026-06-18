@@ -48,7 +48,7 @@ const HeroContent = () => {
                   wrapper="span"
                   speed={50}
                   repeat={Infinity}
-                  className="text-cyan-400"
+                  className="text-blue-400"
                 />
                 <span className="text-yellow-400">&apos;</span>
                 <span className="text-slate-100">;</span>
@@ -67,7 +67,7 @@ const HeroContent = () => {
 
         <motion.h2
           variants={slideInFromLeft(0.5)}
-          className="text-3xl md:text-5xl font-bold mb-4 text-cyan-400"
+          className="text-3xl md:text-5xl font-bold mb-4 text-blue-400"
         >
           Développeur Full Stack
         </motion.h2>
@@ -89,7 +89,7 @@ const HeroContent = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 rounded-lg bg-gradient-to-r from-purple-500 to-cyan-500 text-white font-semibold flex items-center gap-2 shadow-lg shadow-cyan-500/20"
+              className="px-6 py-3 rounded-lg bg-blue-500 text-white font-semibold flex items-center gap-2 shadow-lg shadow-cyan-500/20"
             >
               Voir mes projets
               <ArrowRight className="w-5 h-5" />
@@ -98,7 +98,7 @@ const HeroContent = () => {
         </motion.div>
       </div>
 
-      {/* CHANGER ICI : Ajout de hidden md:flex pour le masquer sur mobile */}
+    
       <motion.div
         variants={slideInFromRight(0.8)}
         className="hidden md:flex flex-1 justify-center items-center w-full"

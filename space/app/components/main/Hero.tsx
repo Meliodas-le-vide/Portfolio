@@ -4,7 +4,7 @@ import HeroContent from "../content/heroContent";
 
 const Hero = () => {
   return (
-    <div className="relative flex flex-col h-screen w-full bg-transparent" id="about-me">
+    <div >
       {/* <video
         autoPlay
         muted

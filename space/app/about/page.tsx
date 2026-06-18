@@ -36,7 +36,7 @@ const About = () => {
     { name: "Tailwind CSS", category: "frontend", color: '#06b6d4', icon: <Image src="/NavLogo.png" alt="Tailwind" width={16} height={16} className="object-contain" /> }, 
     { name: "JavaScript (ES6+)", category: "frontend", color: '#f7df1e', icon: <Image src="/js.png" alt="JavaScript" width={16} height={16} className="object-contain" /> },
     { name: "ReactJS", category: "frontend", color: '#61dafb', icon: <Image src="/react.png" alt="ReactJS" width={16} height={16} className="object-contain" /> },
-    { name: "React Native", category: "frontend", color: '#29d1ff', icon: <Image src="/ReactNative.png" alt="React Native" width={16} height={16} className="object-contain" /> },
+    { name: "React Native", category: "frontend", color: '#29d1ff', icon: <Image src="/reactnative.png" alt="React Native" width={16} height={16} className="object-contain" /> },
     { name: "Flutter", category: "frontend", color: '#cc6699', icon: <Image src="/flutter.png" alt="Flutter" width={16} height={16} className="object-contain" /> },
     { name: "Vue Js", category: "frontend", color: '#54b154', icon: <Image src="/vuejs.png" alt="Vue Js" width={16} height={16} className="object-contain" /> },
     { name: "Figma", category: "frontend", color: '#1b78cf', icon: <Image src="/figma.png" alt="Figma" width={16} height={16} className="object-contain" /> },
@@ -55,7 +55,7 @@ const About = () => {
 
     // Outils & Environnements
     { name: "Git & GitHub", category: "outils", color: '#f05032', icon: <Image src="/git.png" alt="Git" width={16} height={16} className="object-contain" /> },
-    { name: "Vs Code", category: "outils", color: '#ffc107', icon: <Image src="/globe.svg" alt="DevTools" width={16} height={16} className="object-contain" /> },
+    { name: "Vs Code", category: "outils", color: '#ffc107', icon: <Image src="/vscode.png" alt="DevTools" width={16} height={16} className="object-contain" /> },
 
     //Gaminig
     { name: "Unity", category: "game", color: '#27a5ae', icon: <Image src="/unity.png" alt="Unity" width={16} height={16} className="object-contain" /> },
@@ -86,7 +86,7 @@ const About = () => {
           {/* Bloc de Gauche : Photo + Bio */}
           <motion.div variants={itemVariants} className="lg:col-span-5 flex flex-col items-center">
             <div className="relative w-64 h-64 sm:w-72 sm:h-72 mx-auto mb-6">
-              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500 to-purple-600 blur-2xl opacity-30 animate-pulse" />
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500 text-cyan-400 blur-2xl opacity-80 animate-pulse" />
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-slate-800 to-slate-900 p-[3px] z-10">
                 <div className="w-full h-full rounded-full overflow-hidden relative">
                   <Image
@@ -124,8 +124,8 @@ const About = () => {
             <div className="space-y-6">
               {categories.map((category) => (
                 <div key={category.id} className="bg-slate-900/20 p-4 rounded-xl border border-slate-800/40">
-                  <h3 className="text-base font-semibold mb-3 text-emerald-400 flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                  <h3 className="text-base font-semibold mb-3 text-blue-400 flex items-center gap-2">
+                    <span className="h-1.5 w-1.5 rounded-full bg-blue-400" />
                     {category.name}
                   </h3>
 
@@ -175,7 +175,7 @@ const About = () => {
             
             {/* Parcours Académique */}
             <div className="bg-slate-950/40 rounded-xl p-5 border border-slate-800/60 hover:border-emerald-500/30 transition-all duration-300">
-              <h3 className="text-lg font-semibold mb-4 text-emerald-400 flex items-center gap-2">
+              <h3 className="text-lg font-semibold mb-4 text-blue-400 flex items-center gap-2">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
                   <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
@@ -184,14 +184,14 @@ const About = () => {
               </h3>
               <ul className="text-slate-300 space-y-4 text-sm">
                 <li className="flex items-start gap-3">
-                  <span className="bg-emerald-500/10 text-emerald-400 font-bold px-2 py-0.5 rounded text-xs mt-0.5">2024</span>
+                  <span className="bg-emerald-500/10 text-blue-400 font-bold px-2 py-0.5 rounded text-xs mt-0.5">2024</span>
                   <div>
                     <p className="font-medium text-white">YouCode Safi</p>
                     <p className="text-xs text-slate-400">Développeur Full Stack</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <span className="bg-emerald-500/10 text-emerald-400 font-bold px-2 py-0.5 rounded text-xs mt-0.5">2021</span>
+                  <span className="bg-emerald-500/10 text-blue-400 font-bold px-2 py-0.5 rounded text-xs mt-0.5">2021</span>
                   <div>
                     <p className="font-medium text-white">Acharif Al Idrissi</p>
                     <p className="text-xs text-slate-400">BAC Pro en maintenance industrielle</p>
@@ -202,25 +202,25 @@ const About = () => {
 
             {/* Centres d'intérêt */}
             <div className="bg-slate-950/40 rounded-xl p-5 border border-slate-800/60 hover:border-emerald-500/30 transition-all duration-300">
-              <h3 className="text-lg font-semibold mb-4 text-emerald-400 flex items-center gap-2">
+              <h3 className="text-lg font-semibold mb-4 text-blue-400 flex items-center gap-2">
                 <GiMuscleUp className="w-5 h-5" />
                 Centres d&apos;intérêt
               </h3>
               <ul className="text-slate-300 space-y-3 text-sm">
                 <li className="flex items-center gap-3">
-                  <GiMuscleUp className="text-emerald-500 w-4 h-4" />
+                  <GiMuscleUp className="text-blue-400 w-4 h-4" />
                   <span>Sport & fitness</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <FaCheckSquare className="text-emerald-500 w-4 h-4" />
+                  <FaCheckSquare className="text-blue-400 w-4 h-4" />
                   <span>Suivi d&apos;habitudes (discipline & productivité)</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <FaBook className="text-emerald-500 w-4 h-4" />
+                  <FaBook className="text-blue-400 w-4 h-4" />
                   <span>Lecture (Développement personnel)</span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <FaLightbulb className="text-emerald-500 w-4 h-4" />
+                  <FaLightbulb className="text-blue-400 w-4 h-4" />
                   <span>Résolution de problèmes</span>
                 </li>
               </ul>
@@ -228,7 +228,7 @@ const About = () => {
 
             {/* Langues */}
             <div className="bg-slate-950/40 rounded-xl p-5 border border-slate-800/60 hover:border-emerald-500/30 transition-all duration-300">
-              <h3 className="text-lg font-semibold mb-4 text-emerald-400 flex items-center gap-2">
+              <h3 className="text-lg font-semibold mb-4 text-blue-400 flex items-center gap-2">
                 <MdLanguage className="w-5 h-5" />
                 Langues
               </h3>
@@ -239,7 +239,7 @@ const About = () => {
                     <span className="text-slate-400">100%</span>
                   </div>
                   <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                    <div className="bg-emerald-500 h-full w-full" />
+                    <div className="bg-blue-400 h-full w-full" />
                   </div>
                 </li>
                 <li className="space-y-1">
@@ -248,7 +248,7 @@ const About = () => {
                     <span className="text-slate-400">40%</span>
                   </div>
                   <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                    <div className="bg-emerald-500 h-full w-2/5" />
+                    <div className="bg-blue-400 h-full w-2/5" />
                   </div>
                 </li>
                 <li className="space-y-1">
@@ -257,7 +257,7 @@ const About = () => {
                     <span className="text-slate-400">40%</span>
                   </div>
                   <div className="w-full bg-slate-800 h-1.5 rounded-full overflow-hidden">
-                    <div className="bg-emerald-500 h-full w-2/5" />
+                    <div className="bg-blue-400 h-full w-2/5" />
                   </div>
                 </li>
               </ul>
@@ -265,7 +265,7 @@ const About = () => {
 
             {/* Certifications */}
             <div className="bg-slate-950/40 rounded-xl p-5 border border-slate-800/60 hover:border-emerald-500/30 transition-all duration-300">
-              <h3 className="text-lg font-semibold mb-4 text-emerald-400 flex items-center gap-2">
+              <h3 className="text-lg font-semibold mb-4 text-blue-400 flex items-center gap-2">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                 </svg>
