@@ -28,7 +28,7 @@ const Navbar = () => {
           className="flex items-center gap-2 text-gray-300 font-bold text-sm hover:text-white transition-colors"
         >
           <span className="font-mono text-blue-400">&lt;</span>
-          Pkangor Dev
+         
           <span className="font-mono text-blue-400">/&gt;</span>
         </Link>
 

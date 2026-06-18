@@ -7,9 +7,7 @@ export default function Home() {
     <main className="min-h-screen w-full">
       <div className="flex flex-col gap-20">
         <Hero />
-        <div className="mt-15">
-           <Footer />
-        </div>
+        <Footer />
       </div>
     </main>
   );

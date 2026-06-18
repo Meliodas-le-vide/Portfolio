@@ -95,21 +95,13 @@ const HeroContent = () => {
               <ArrowRight className="w-5 h-5" />
             </motion.button>
           </Link>
-
-          {/* <Link href="/contact">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 rounded-lg border border-cyan-500 text-cyan-400 hover:bg-cyan-500 hover:text-white transition-all duration-200"
-            >
-              Me contacter
-            </motion.button>
-          </Link> */}
         </motion.div>
       </div>
+
+      {/* CHANGER ICI : Ajout de hidden md:flex pour le masquer sur mobile */}
       <motion.div
         variants={slideInFromRight(0.8)}
-        className="flex-1 flex justify-center items-center w-full"
+        className="hidden md:flex flex-1 justify-center items-center w-full"
       >
         <div className="relative w-full max-w-[550px] aspect-square flex justify-center items-center">
           <Image

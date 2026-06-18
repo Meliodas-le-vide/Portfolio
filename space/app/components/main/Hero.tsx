@@ -1,6 +1,7 @@
 import HeroContent from "../content/heroContent";
 
 
+
 const Hero = () => {
   return (
     <div className="relative flex flex-col h-screen w-full bg-transparent" id="about-me">
@@ -14,7 +15,6 @@ const Hero = () => {
         <source src="/ground1.mp4" type="video/mp4" />
       </video> */}
        <HeroContent />
-       
     </div>
   );
 };
