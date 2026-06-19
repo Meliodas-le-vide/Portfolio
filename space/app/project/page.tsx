@@ -6,6 +6,7 @@ import { FaBook, FaLightbulb, FaCheckSquare } from "react-icons/fa";
 import { MdLanguage } from "react-icons/md";
 import { GiMuscleUp } from "react-icons/gi";
 import Footer from "../components/main/Footer";
+import Project from "../components/main/Project";
 
 const About = () => {
   const containerVariants = {
@@ -82,13 +83,12 @@ const About = () => {
         <motion.h1 variants={itemVariants} className="mt-10 text-4xl font-extrabold tracking-tight text-center text-white mb-12 text-4xl font-extrabold tracking-tight text-white sm:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">
           Mes Projets
         </motion.h1>
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-     
+              <Project/>
         </div>
       </motion.div>
 
-      {/* <Footer/> */}
+      <Footer/>
     </>
   );
 };
