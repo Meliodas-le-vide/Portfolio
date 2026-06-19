@@ -4,6 +4,7 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import { Send, CheckCircle, AlertCircle, Mail, Phone, Calendar } from "lucide-react"
 import Footer from "../components/main/Footer"
+import { div } from "three/src/nodes/math/OperatorNode.js"
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -69,14 +70,16 @@ const Contact = () => {
   }
 
   return (
-    <motion.div 
+    
+    <>
+      <motion.div 
       initial="hidden" 
       animate="visible" 
       exit={{ opacity: 0 }} 
       variants={containerVariants} 
       className="py-16 px-4 max-w-6xl mx-auto"
     >
-      <motion.div variants={itemVariants} className="text-center mb-12">
+      <motion.div variants={itemVariants} className="text-center mb-12 mt-5">
         <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">
           Me Contacter
         </h1>
@@ -144,7 +147,7 @@ const Contact = () => {
 
         {/* Colonne Formulaire */}
         <motion.div variants={itemVariants} className="lg:col-span-7 relative z-99 pointer-events-auto">
-          <div className="backdrop-blur-lg bg-slate-950/40 border border-slate-800 p-8 rounded-2xl shadow-xl relative overflow-hidden">
+          <div className="backdrop-blur-lg bg-slate-950/40 border border-slate-800 p-8 rounded-2xl shadow-xl relative overflow-hidden opacity-70">
             
             {formStatus.submitted && formStatus.success ? (
               <motion.div
@@ -241,7 +244,8 @@ const Contact = () => {
       </div>
 
     </motion.div>
-    
+       <Footer />
+    </>
     
   )
 }

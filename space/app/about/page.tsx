@@ -5,6 +5,7 @@ import Image from "next/image";
 import { FaBook, FaLightbulb, FaCheckSquare } from "react-icons/fa";
 import { MdLanguage } from "react-icons/md";
 import { GiMuscleUp } from "react-icons/gi";
+import Footer from "../components/main/Footer";
 
 const About = () => {
   const containerVariants = {
@@ -78,7 +79,7 @@ const About = () => {
         variants={containerVariants}
         className="py-12"
       >
-        <motion.h1 variants={itemVariants} className="mt-8 text-4xl font-extrabold tracking-tight text-center text-white mb-12 text-4xl font-extrabold tracking-tight text-white sm:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">
+        <motion.h1 variants={itemVariants} className="mt-10 text-4xl font-extrabold tracking-tight text-center text-white mb-12 text-4xl font-extrabold tracking-tight text-white sm:text-5xl bg-clip-text text-transparent bg-gradient-to-r from-white via-slate-200 to-slate-400">
           À propos de moi
         </motion.h1>
 
@@ -264,7 +265,7 @@ const About = () => {
             </div>
 
             {/* Certifications */}
-            <div className="bg-slate-950/40 rounded-xl p-5 border border-slate-800/60 hover:border-emerald-500/30 transition-all duration-300">
+            {/* <div className="bg-slate-950/40 rounded-xl p-5 border border-slate-800/60 hover:border-emerald-500/30 transition-all duration-300">
               <h3 className="text-lg font-semibold mb-4 text-blue-400 flex items-center gap-2">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                   <path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
@@ -289,11 +290,12 @@ const About = () => {
                   <span>CodinGame Certification – JavaScript</span>
                 </li>
               </ul>
-            </div>
+            </div> */}
 
           </div>
         </motion.div>
       </motion.div>
+      <Footer/>
     </>
   );
 };

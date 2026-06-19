@@ -28,14 +28,14 @@ const Footer = () => {
   const navLinks = [
     { label: "Accueil", url: "/" },
     { label: "À propos", url: "/about" },
-    { label: "Projets", url: "/projects" },
+    { label: "Projets", url: "/project" },
     { label: "Contact", url: "/contact" },
   ];
 
-  const stack = ["Next.js", "Tailwind CSS", "Framer Motion", "Three.js"];
+  const stack = ["Next.js", "Tailwind CSS", "Framer Motion", "Ts Particule"];
 
   return (
-    <footer className="relative w-full z-10 mt-28 border-t border-slate-900/50 backdrop-blur-md bg-slate-950/30 text-slate-400 pointer-events-auto">
+    <footer className="relative w-full z-99 mt-28 border-t border-slate-900/50 backdrop-blur-md bg-slate-950/30 text-slate-400 pointer-events-auto opacity-70">
       {/* Ligne de séparation lumineuse */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
 
@@ -52,7 +52,7 @@ const Footer = () => {
           >
             <span className="font-mono text-lg font-bold text-white tracking-tight">
               <span className="text-blue-500">&lt;</span>
-              EzechielAkesse
+              
               <span className="text-blue-500">/&gt;</span>
             </span>
 
@@ -122,7 +122,7 @@ const Footer = () => {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-400"></span>
                 </span>
-                <span className="text-xs text-slate-300 font-medium">Disponible pour du freelance</span>
+                <span className="text-xs text-slate-300 font-medium">Disponible</span>
               </div>
               <p className="text-xs text-slate-500 leading-relaxed">
                 Basé en Côte d&apos;Ivoire, ouvert aux opportunités de projets à distance à l&apos;international.
