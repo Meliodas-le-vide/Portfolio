@@ -42,9 +42,9 @@ const HeroContent = () => {
                 <TypeAnimation
                   sequence={[
                     "Ezechiel Akesse",
-                    2500,
+                    2000,
                     "Développeur Full Stack",
-                    2500,
+                    2000,
                   ]}
                   wrapper="span"
                   speed={50}
