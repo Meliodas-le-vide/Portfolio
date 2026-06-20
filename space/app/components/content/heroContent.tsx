@@ -17,7 +17,8 @@ const HeroContent = () => {
     <motion.div
       initial="hidden"
       animate="visible"
-      className="flex flex-col md:flex-row items-center justify-between container mx-auto max-w-6xl px-6 md:px-12 mt-20 md:mt-32 w-full z-[20] gap-12"
+     
+      className="flex flex-col md:flex-row items-center justify-between container mx-auto max-w-6xl px-6 md:px-12 mt-20 md:mt-32 w-full relative z-[99] gap-12"
     >
       <div className="flex-1 flex flex-col justify-center text-center md:text-left w-full">
         <motion.div variants={slideInFromTop} className="mb-6">
@@ -81,15 +82,16 @@ const HeroContent = () => {
           et l&apos;innovation.
         </motion.p>
 
+        {/* CORRECTION DU BOUTON ICI : z-50 et relative sur le bloc parent */}
         <motion.div
           variants={slideInFromLeft(1)}
-          className="flex flex-wrap justify-center md:justify-start gap-4"
+          className="flex flex-wrap justify-center md:justify-start gap-4 relative z-50"
         >
-          <Link href="/project">
+          <Link href="/project" className="cursor-pointer block relative z-50">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 rounded-lg bg-blue-500 text-white font-semibold flex items-center gap-2 shadow-lg shadow-cyan-500/20"
+              className="px-6 py-3 rounded-lg bg-blue-500 text-white font-semibold flex items-center gap-2 shadow-lg shadow-cyan-500/20 cursor-pointer pointer-events-auto"
             >
               Voir mes projets
               <ArrowRight className="w-5 h-5" />
