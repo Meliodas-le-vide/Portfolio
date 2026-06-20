@@ -18,26 +18,26 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // 1. On filtre pour supprimer LinkedIn
+  // Filtrer pour supprimer LinkedIn
   const filteredSocials = Socials.filter(
     (social) => social.name.toLowerCase() !== "linkedin"
   );
 
   return (
     <header className="w-full fixed top-0 z-50 shadow-lg shadow-black/10 bg-[#03001417] backdrop-blur-md">
-      <div className="max-w-6xl mx-auto px-6 h-[65px] flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-6 h-[65px] flex items-center justify-between relative">
 
-        {/* Logo */}
+        {/* Logo (Reste calé à gauche) */}
         <Link
           href="/"
-          className="flex items-center gap-2 text-gray-300 font-bold text-sm hover:text-white transition-colors"
+          className="flex items-center gap-2 text-gray-300 font-bold text-sm hover:text-white transition-colors z-10"
         >
           <span className="font-mono text-blue-400">&lt;</span>
           <span className="font-mono text-blue-400">/&gt;</span>
         </Link>
 
-        {/* Nav desktop */}
-        <nav className="hidden md:flex items-center gap-1 border border-white/10 bg-[#0300145e] px-5 py-2 rounded-full">
+        {/* Nav desktop (Parfaitement centrée grâce à mx-auto et absolute sur grand écran) */}
+        <nav className="hidden md:flex items-center gap-1 border border-white/10 bg-[#0300145e] px-5 py-2 rounded-full absolute left-1/2 -translate-x-1/2">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -53,25 +53,12 @@ const Navbar = () => {
           ))}
         </nav>
 
-        {/* Socials desktop */}
-        <div className="hidden md:flex items-center gap-4">
-          {filteredSocials.map((social) => (
-            <a
-              key={social.name}
-              href={(social as any).url ?? "#"} {/* 2. Correction de l'erreur TypeScript ici */}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={social.name}
-              className="opacity-70 hover:opacity-100 transition-opacity"
-            >
-              <Image src={social.src} alt={social.name} width={22} height={22} />
-            </a>
-          ))}
-        </div>
+        {/* Bloc invisible à droite sur desktop pour équilibrer le flex justify-between si besoin */}
+        <div className="hidden md:block w-[32px] h-[22px]" />
 
-        {/* Bouton hamburger mobile */}
+        {/* Bouton hamburger mobile (Reste calé à droite sur mobile) */}
         <button
-          className="md:hidden text-blue-500 hover:text-white transition-colors"
+          className="md:hidden text-blue-500 hover:text-white transition-colors z-10"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Ouvrir le menu"
         >
@@ -81,8 +68,7 @@ const Navbar = () => {
 
       {/* Menu mobile déroulant */}
       {menuOpen && (
-        // Note : J'ai enlevé "opacity-30" ici pour que ton menu ne soit pas transparent/invisible
-        <div className="md:hidden bg-[#030014]/95 backdrop-blur-md border-t border-white/10 px-6 pb-6 pt-4 flex flex-col gap-4">
+        <div className="md:hidden bg-[#030014]/95 opacity-50 backdrop-blur-md border-t border-white/10 px-6 pb-6 pt-4 flex flex-col gap-4">
           <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
@@ -99,22 +85,6 @@ const Navbar = () => {
               </Link>
             ))}
           </nav>
-
-          {/* Socials mobile */}
-          <div className="flex gap-4 pt-2 border-t border-white/10">
-            {filteredSocials.map((social) => (
-              <a
-                key={social.name}
-                href={(social as any).url ?? "#"} {/* 3. Correction de l'erreur TypeScript ici aussi */}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.name}
-                className="opacity-70 hover:opacity-100 transition-opacity"
-              >
-                <Image src={social.src} alt={social.name} width={22} height={22} />
-              </a>
-            ))}
-          </div>
         </div>
       )}
     </header>
