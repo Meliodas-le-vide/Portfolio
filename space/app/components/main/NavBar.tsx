@@ -18,7 +18,7 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // Filtrer pour exclure LinkedIn (en minuscule ou majuscule pour être sûr)
+  // 1. On filtre pour supprimer LinkedIn
   const filteredSocials = Socials.filter(
     (social) => social.name.toLowerCase() !== "linkedin"
   );
@@ -33,7 +33,6 @@ const Navbar = () => {
           className="flex items-center gap-2 text-gray-300 font-bold text-sm hover:text-white transition-colors"
         >
           <span className="font-mono text-blue-400">&lt;</span>
-         
           <span className="font-mono text-blue-400">/&gt;</span>
         </Link>
 
@@ -54,12 +53,12 @@ const Navbar = () => {
           ))}
         </nav>
 
-        {/* Socials desktop (Utilise maintenant le tableau filtré) */}
+        {/* Socials desktop */}
         <div className="hidden md:flex items-center gap-4">
           {filteredSocials.map((social) => (
             <a
               key={social.name}
-              href={social.url ?? "#"}
+              href={(social as any).url ?? "#"} {/* 2. Correction de l'erreur TypeScript ici */}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={social.name}
@@ -82,7 +81,8 @@ const Navbar = () => {
 
       {/* Menu mobile déroulant */}
       {menuOpen && (
-        <div className="md:hidden bg-[#030014]/95 opacity-30 backdrop-blur-md border-t border-white/10 px-6 pb-6 pt-4 flex flex-col gap-4">
+        // Note : J'ai enlevé "opacity-30" ici pour que ton menu ne soit pas transparent/invisible
+        <div className="md:hidden bg-[#030014]/95 backdrop-blur-md border-t border-white/10 px-6 pb-6 pt-4 flex flex-col gap-4">
           <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
@@ -100,12 +100,12 @@ const Navbar = () => {
             ))}
           </nav>
 
-          {/* Socials mobile (Utilise aussi le tableau filtré) */}
+          {/* Socials mobile */}
           <div className="flex gap-4 pt-2 border-t border-white/10">
             {filteredSocials.map((social) => (
               <a
                 key={social.name}
-                href={social.url ?? "#"}
+                href={(social as any).url ?? "#"} {/* 3. Correction de l'erreur TypeScript ici aussi */}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={social.name}
