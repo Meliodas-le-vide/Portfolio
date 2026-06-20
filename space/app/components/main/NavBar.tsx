@@ -68,7 +68,7 @@ const Navbar = () => {
 
       {/* Menu mobile déroulant */}
       {menuOpen && (
-        <div className="md:hidden bg-[#030014]/95 opacity-50 backdrop-blur-md border-t border-white/10 px-6 pb-6 pt-4 flex flex-col gap-4">
+        <div className="md:hidden bg-[#030014]/95 opacity-80 backdrop-blur-md border-t border-white/10 px-6 pb-6 pt-4 flex flex-col gap-4">
           <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
