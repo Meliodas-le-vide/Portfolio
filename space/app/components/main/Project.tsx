@@ -1,26 +1,27 @@
 import React from "react";
 import ProjectCard from "../content/ProjectCard";
-const Project= () => {
+
+const Project = () => {
   return (
-    <div
-      className="flex flex-col items-center justify-center py-20"
-      id="projects"
-    >
-      <div className="h-full w-full flex flex-col md:flex-row gap-10 px-10">
+    <div className="w-full px-4 sm:px-6 lg:px-8 py-6" id="projects">
+      {/* Grille responsive automatique */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <ProjectCard
-          src="/NextWebsite.png"
-          title="Modern Next.js Portfolio"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          src="/post-it.png"
+          title="Post-it"
+          description="Une application web frontend permettant de creer, modifier, supprimer et voir des post réalisé avec vuejs."
+          
         />
         <ProjectCard
-          src="/CardImage.png"
-          title="Interactive Website Cards"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          src="/movies.png"
+          title="Movie app"
+          description="Une application web de film realisé avec nestjs pour le backend et nextjs pour le frontend."
+          
         />
         <ProjectCard
-          src="/SpaceWebsite.png"
-          title="Space Themed Website"
-          description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          src="/trello.jpeg"
+          title="Trello Clone"
+           description="Une application mobile réalisé avec react Native , en utilisant l'api de Trello"        
         />
       </div>
     </div>

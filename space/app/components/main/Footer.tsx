@@ -10,12 +10,12 @@ const Footer = () => {
   const socialLinks = [
     {
       icon: <FaGithub className="w-4 h-4" />,
-      url: "https://github.com/",
+      url: "https://github.com/Meliodas-le-vide",
       label: "GitHub",
     },
     {
       icon: <FaLinkedin className="w-4 h-4" />,
-      url: "https://www.linkedin.com/",
+      url: "www.linkedin.com/in/kamenan-guy-ezechiel-akesse-299424378",
       label: "LinkedIn",
     },
     {
@@ -57,7 +57,7 @@ const Footer = () => {
             </span>
 
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-              Développeur Full Stack spécialisé dans l&apos;ingénierie d&apos;applications web et mobiles modernes, performantes et animées.
+              Développeur Full Stack spécialisé dans le developpement applications web et mobiles modernes, performantes et animées.
             </p>
 
             {/* Réseaux Sociaux */}

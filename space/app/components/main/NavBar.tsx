@@ -18,6 +18,11 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
+  // Filtrer pour exclure LinkedIn (en minuscule ou majuscule pour être sûr)
+  const filteredSocials = Socials.filter(
+    (social) => social.name.toLowerCase() !== "linkedin"
+  );
+
   return (
     <header className="w-full fixed top-0 z-50 shadow-lg shadow-black/10 bg-[#03001417] backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-6 h-[65px] flex items-center justify-between">
@@ -49,9 +54,9 @@ const Navbar = () => {
           ))}
         </nav>
 
-        {/* Socials desktop */}
+        {/* Socials desktop (Utilise maintenant le tableau filtré) */}
         <div className="hidden md:flex items-center gap-4">
-          {Socials.map((social) => (
+          {filteredSocials.map((social) => (
             <a
               key={social.name}
               href={social.url ?? "#"}
@@ -67,7 +72,7 @@ const Navbar = () => {
 
         {/* Bouton hamburger mobile */}
         <button
-          className="md:hidden text-gray-300 hover:text-white transition-colors"
+          className="md:hidden text-blue-500 hover:text-white transition-colors"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Ouvrir le menu"
         >
@@ -77,7 +82,7 @@ const Navbar = () => {
 
       {/* Menu mobile déroulant */}
       {menuOpen && (
-        <div className="md:hidden bg-[#030014]/95 backdrop-blur-md border-t border-white/10 px-6 pb-6 pt-4 flex flex-col gap-4">
+        <div className="md:hidden bg-[#030014]/95 opacity-30 backdrop-blur-md border-t border-white/10 px-6 pb-6 pt-4 flex flex-col gap-4">
           <nav className="flex flex-col gap-1">
             {navLinks.map((link) => (
               <Link
@@ -95,9 +100,9 @@ const Navbar = () => {
             ))}
           </nav>
 
-          {/* Socials mobile */}
+          {/* Socials mobile (Utilise aussi le tableau filtré) */}
           <div className="flex gap-4 pt-2 border-t border-white/10">
-            {Socials.map((social) => (
+            {filteredSocials.map((social) => (
               <a
                 key={social.name}
                 href={social.url ?? "#"}

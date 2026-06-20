@@ -1,52 +1,57 @@
-
+import Image from "next/image";
 
 interface Props {
   src: string;
   title: string;
   description: string;
+  tags?: string[]; // Optionnel : pour ajouter des badges (ex: ["React", "Tailwind"])
 }
 
-const ProjectCard = ({ src, title, description }: Props) => {
+const ProjectCard = ({ src, title, description, tags = [] }: Props) => {
   return (
-    <>
-      {/* <div className="relative overflow-hidden rounded-lg shadow-lg border border-[#2A0E61]">
+    <div className="group relative overflow-hidden rounded-2xl bg-slate-900/50 backdrop-blur-sm border border-slate-800 hover:border-purple-500/50 transition-all duration-300 flex flex-col h-full shadow-xl hover:shadow-purple-500/10">
+      
+      {/* Conteneur de l'image avec zoom au survol */}
+      <div className="relative h-48 w-full overflow-hidden sm:h-52">
         <Image
           src={src}
           alt={title}
-          width={1000}
-          height={1000}
-          className="w-full object-contain"
+          fill
+          className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
         />
-
-        <div className="relative p-4">
-          <h1 className="text-2xl font-semibold text-white">{title}</h1>
-          <p className="mt-2 text-gray-300">{description}</p>
-        </div>
-      </div> */}
-      <div className="bg-white dark:bg-gray-900">
-        <div className="px-8 py-10 mx-auto lg:max-w-screen-xl sm:max-w-xl md:max-w-full sm:px-12 md:px-16 lg:py-20 sm:py-16">
-          <div className="grid gap-x-8 gap-y-12 sm:gap-y-16 md:grid-cols-2 lg:grid-cols-3">
-            <div className="relative">
-              <a href="#_" className="block overflow-hidden group rounded-xl shadow-lg">
-                <img src={src} className="object-cover w-full h-56 transition-all duration-300 ease-out sm:h-64 group-hover:scale-110" alt="Adventure" />
-              </a>
-              <div className="relative mt-5">
-                <a href="#" className="block mb-3 hover:underline">
-                  <h2 className="text-2xl font-bold leading-5 text-black dark:text-white transition-colors duration-200 hover:text-purple-700 dark:hover:text-purple-400">
-                    {title}
-                  </h2>
-                </a>
-                <p className="mb-4 text-gray-700 dark:text-gray-300">{description}</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* Voile sombre dégradé sur l'image */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />
       </div>
-    </>
 
+      {/* Contenu textuel */}
+      <div className="p-5 flex flex-col flex-grow">
+        {/* Badges de technologies */}
+        <div className="flex flex-wrap gap-2 mb-3">
+          {tags.map((tag, index) => (
+            <span key={index} className="text-[10px] uppercase tracking-wider font-semibold px-2.5 py-1 bg-purple-500/10 text-purple-400 rounded-md border border-purple-500/20">
+              {tag}
+            </span>
+          ))}
+        </div>
+
+        <h3 className="text-xl font-bold text-white mb-2 transition-colors duration-200 group-hover:text-purple-400">
+          {title}
+        </h3>
+        
+        <p className="text-sm text-slate-400 leading-relaxed flex-grow">
+          {description}
+        </p>
+
+        {/* Lien d'action optionnel */}
+        {/* <div className="mt-4 pt-4 border-t border-slate-800/60 flex items-center text-xs font-semibold text-slate-400 group-hover:text-white transition-colors duration-200">
+          Voir le projet 
+          <svg className="w-3 h-3 ml-1.5 transform transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </div> */}
+      </div>
+    </div>
   );
 };
 
 export default ProjectCard;
-
-
